@@ -55,7 +55,9 @@ export interface ResolvedSsrConfig {
   endpoint: string;
   projectId: string;
   cookieName: string;
-  cookieOptions: Required<Pick<CookieOptions, "path" | "secure" | "sameSite" | "httpOnly">> &
+  cookieOptions: Required<
+    Pick<CookieOptions, "path" | "secure" | "sameSite" | "httpOnly">
+  > &
     CookieOptions;
   basePath: string;
   redirects: {
@@ -96,11 +98,15 @@ export interface AdapterResponseInit {
 }
 
 export interface Adapter<TIn extends unknown[], TOut> {
-  toContext(...input: TIn): AdapterRequestContext | Promise<AdapterRequestContext>;
+  toContext(
+    ...input: TIn
+  ): AdapterRequestContext | Promise<AdapterRequestContext>;
   respond(init: AdapterResponseInit, ...input: TIn): TOut | Promise<TOut>;
 }
 
-export type HandlerLogic = (ctx: AdapterRequestContext) => Promise<AdapterResponseInit>;
+export type HandlerLogic = (
+  ctx: AdapterRequestContext,
+) => Promise<AdapterResponseInit>;
 
 export interface SessionServer {
   account: import("appwrite").Account;
@@ -122,7 +128,6 @@ export interface AdminServer {
   databases: import("node-appwrite").Databases;
   functions: import("node-appwrite").Functions;
   graphql: import("node-appwrite").Graphql;
-  health: import("node-appwrite").Health;
   locale: import("node-appwrite").Locale;
   messaging: import("node-appwrite").Messaging;
   organization: import("node-appwrite").Organization;
@@ -134,7 +139,6 @@ export interface AdminServer {
   tablesDB: import("node-appwrite").TablesDB;
   teams: import("node-appwrite").Teams;
   tokens: import("node-appwrite").Tokens;
-  usage: import("node-appwrite").Usage;
   users: import("node-appwrite").Users;
   webhooks: import("node-appwrite").Webhooks;
 }

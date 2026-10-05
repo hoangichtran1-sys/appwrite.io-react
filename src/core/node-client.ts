@@ -8,7 +8,6 @@ import {
   Databases as NodeDatabases,
   Functions as NodeFunctions,
   Graphql as NodeGraphql,
-  Health as NodeHealth,
   Locale as NodeLocale,
   Messaging as NodeMessaging,
   Organization as NodeOrganization,
@@ -20,11 +19,14 @@ import {
   TablesDB as NodeTablesDB,
   Teams as NodeTeams,
   Tokens as NodeTokens,
-  Usage as NodeUsage,
   Users as NodeUsers,
   Webhooks as NodeWebhooks,
 } from "node-appwrite";
-import type { AdminServer, NodeSessionServer, ResolvedSsrConfig } from "./types";
+import type {
+  AdminServer,
+  NodeSessionServer,
+  ResolvedSsrConfig,
+} from "./types";
 
 export function buildNodeSessionClient(
   config: ResolvedSsrConfig,
@@ -55,7 +57,6 @@ export function buildAdminClient(
     databases: new NodeDatabases(client),
     functions: new NodeFunctions(client),
     graphql: new NodeGraphql(client),
-    health: new NodeHealth(client),
     locale: new NodeLocale(client),
     messaging: new NodeMessaging(client),
     organization: new NodeOrganization(client),
@@ -67,7 +68,6 @@ export function buildAdminClient(
     tablesDB: new NodeTablesDB(client),
     teams: new NodeTeams(client),
     tokens: new NodeTokens(client),
-    usage: new NodeUsage(client),
     users: new NodeUsers(client),
     webhooks: new NodeWebhooks(client),
   };
